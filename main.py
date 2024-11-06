@@ -1,14 +1,18 @@
-from notifications.factory import NotificationFactory
+from notifications.singleton_factory import NotificationSingletonFactory
+
 
 def main():
-    notification_type = "email"
-    message = "Hello! This is a test notification."
+    notification_factory = NotificationSingletonFactory()
 
-    try:
-        notification = NotificationFactory.create_notification(notification_type)
-        notification.send(message)
-    except ValueError as e:
-        print(e)
+    notification_type = "email"
+    message = "Hello, Singleton Pattern!"
+
+    notification = notification_factory.create_notification(notification_type)
+    notification.send(message)
+
+    another_factory_instance = NotificationSingletonFactory()
+    print(f"Are both instances the same? {notification_factory is another_factory_instance}")
+
 
 if __name__ == "__main__":
     main()
