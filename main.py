@@ -1,8 +1,7 @@
 from notifications.factory import NotificationFactory
 
-
 def main():
-    notification_type = "email"  # You could also try "sms" or "push"
+    notification_type = "email"
     message = "Hello! This is a test notification."
 
     try:
